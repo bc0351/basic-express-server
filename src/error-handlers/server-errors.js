@@ -7,40 +7,31 @@
  * @param {*} next 
  */
 
-/* The server has encountered a situation it does not know 
-how to handle. */
-
-export function internalErrorHandler(req, res, next) {
+function internalErrorHandler(req, res, next) {
+  console.log(req.body);
   res.status(500).send('Internal Server Error');
 }
 
-/* This error response means that the server, while 
-working as a gateway to get a response needed to handle 
-the request, got an invalid response. */
+// function badGatewayHandler(req, res, next) {
+//   res.status(502).send('Bad Gateway');
+// }
 
-export function badGatewayHandler(req, res, next) {
-  res.status(502).send('Bad Gateway');
-}
+// function unavailableHandler(req, res, next) {
+//   res.status(503).send('Service Unavailable');
+// }
 
-/* The server is not ready to handle the request. Common
-causes are a server that is down for maintenance or that
-is overloaded. Note that together with this response, a
-user-friendly page explaining the problem should be sent. */
+// function gatewayTimeoutHandler(req, res, next) {
+//   res.status(504).send('Gateway Timeout');
+// }
 
-export function unavailableHandler(req, res, next) {
-  res.status(503).send('Service Unavailable');
-}
+// function networkAuthHandler(req, res, next) {
+//   res.status(511).send('Network Authentication Required');
+// }
 
-/* This error response is given when the server is acting
-as a gateway and cannot get a response in time. */
-
-export function gatewayTimeoutHandler(req, res, next) {
-  res.status(504).send('Gateway Timeout');
-}
-
-/* Indicates that the client needs to authenticate to gain
-network access. */
-
-export function networkAuthHandler(req, res, next) {
-  res.status(511).send('Network Authentication Required');
+module.exports = {
+  internalErrorHandler,
+  // badGatewayHandler,
+  // unavailableHandler,
+  // gatewayTimeoutHandler,
+  // networkAuthHandler
 }
