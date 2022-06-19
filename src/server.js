@@ -1,9 +1,7 @@
 'use strict';
 
-const { validateQuery, validateUrlQuery, validateAllPathMethod, validateGetMethod } = require('./middleware/validator');
+const { validateQuery, validateAllPathMethod} = require('./middleware/validator');
 const { logger } = require('./middleware/logger');
-const { badRequestHandler, notFoundHandler } = require('./error-handlers/client-errors');
-const { internalErrorHandler} = require('./error-handlers/server-errors');
 
 const express = require('express');
 const app = express();
@@ -11,11 +9,8 @@ const app = express();
 app.use(logger);
 app.get('/person', validateQuery);
 app.get('/person/:name', validateQuery);
-app.use(validateGetMethod);
-app.use(badRequestHandler);
 app.use('/', validateAllPathMethod);
-app.use('*', notFoundHandler);
-app.use(internalErrorHandler);
+app.use('*', validateAllPathMethod);
 
 module.exports = {
   server: app,
