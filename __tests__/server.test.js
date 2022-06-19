@@ -29,6 +29,11 @@ describe('Server Tests', () => {
     });
   });
   describe('Successful Response Tests', () => {
+    test('/Catch-all route returns successful connection message', async () => {
+      let response = await mockRequest.get('/');
+      expect(response.status).toEqual(200);
+      expect(response.text).toEqual('OK');
+    });
     test('/person route works with name in query parameter', async () => {
       let response = await mockRequest.get('/person?name=John');
       expect(response.status).toEqual(200);
