@@ -7,6 +7,10 @@
  * @param {*} next 
  */
 
- export function successfulResponseHandler (req, res, next) {
+function successfulResponseHandler(req, res) {
   res.status(200).send('OK');
+}
+
+module.exports = {
+  successfulResponseHandler
 }
