@@ -72,5 +72,5 @@
 
 ### **Deployment**
 
-  * Server must be deployed on heroku.
-  * URL:  [code-401-ben-basic-server]()
+  * Github:  [Repo](https://github.com/bc0351/basic-express-server/tree/dev)
+  * Heroku:  [ben-basic-express-server-app](https://ben-basic-express-server-app.herokuapp.com)
